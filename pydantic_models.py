@@ -62,6 +62,24 @@ class UserToValidate(pydantic.BaseModel):
     disabled: bool | None = None
 
 
+class Token(pydantic.BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(pydantic.BaseModel):
+    username: str | None = None
+
+
+class Admin(pydantic.BaseModel):
+    username: str
+
+
+class UserInDB(Admin):
+    hashed_password: str
+
+
+
 UserToUpdate.update_forward_refs()
 User.update_forward_refs()
 UserToCreate.update_forward_refs()
